@@ -32,27 +32,9 @@ public class InventorySlot : MonoBehaviour {
 		Inventory.Instance.Remove(item);
 	}
 
-	// Use the item
 	public void UseItem() {
-		HandleItemUse();
-	}
-
-	private void HandleItemUse() {
-		if(item == null) {
-			return;
-		}
-		switch(item.ItemType) {
-			case ItemType.Weapon:
-				Inventory.Instance.SwapWeapon(item);
-				break;
-
-			case ItemType.Armor:
-				Inventory.Instance.SwapArmor(item);
-				break;
-
-			case ItemType.Consumable:
-				item.Use();
-				break;
+		if(item != null) {
+			item.Use();
 		}
 	}
 

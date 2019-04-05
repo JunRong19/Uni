@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7802973441485115179}
   - component: {fileID: 7802973441485115176}
   - component: {fileID: 1284028117907116729}
-  - component: {fileID: 2686060212844764475}
+  - component: {fileID: 1956476272635129823}
   m_Layer: 8
   m_Name: Weapon_Axe
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7802973441485115177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.332, y: -2.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,7 +107,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2686060212844764475
+--- !u!114 &1956476272635129823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,5 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d8d90baf14541469878d4ef9ac1e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 757bb404aac7d1042bd09c215a5d025e, type: 2}
   weaponType: 0

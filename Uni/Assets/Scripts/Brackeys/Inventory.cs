@@ -37,20 +37,4 @@ public class Inventory : Singleton<Inventory> {
 			onItemChangedCallback.Invoke();
 	}
 
-	public void SwapWeapon(Item item) {
-		// If player is holding weapon.
-		if(PlayerCombatController.Instance.CurrentWeapon != null) {
-			// Get the current weapon item object and add it to the inventory.
-			Item prevItem = PlayerCombatController.Instance.CurrentWeapon.item;
-			Add(prevItem);
-		}
-		// Remove weapon that is being swap in the inventory and equip it.
-		Remove(item);
-		PlayerCombatController.Instance.EquipWeapon(item);
-	}
-
-	public void SwapArmor(Item item) {
-		// Handle armor swaping
-	}
-
 }

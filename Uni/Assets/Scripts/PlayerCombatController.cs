@@ -8,9 +8,6 @@ public class PlayerCombatController : Singleton<PlayerCombatController> {
 	[SerializeField, Tooltip("Weapon the player is currently holding.")]
 	private Weapon currentWeapon;
 
-	[SerializeField, Tooltip("Position of hand")]
-	private Transform handPos;
-
 	private WeaponType currentWeaponType;
 
 	#region Properties
@@ -27,9 +24,6 @@ public class PlayerCombatController : Singleton<PlayerCombatController> {
 
 	#endregion
 
-	private GameObject GetWeaponOnHand() {
-		return handPos.GetChild(0).gameObject;
-	}
 
 	private void Update() {
 		HandlePlayerAttack();
@@ -74,18 +68,6 @@ public class PlayerCombatController : Singleton<PlayerCombatController> {
 		if(Input.GetMouseButtonDown(1)) {
 			AlternateAttack();
 		}
-	}
-
-	public void EquipWeapon(Item item) {
-		// If player is holding a weapon, remove it.
-		if(CurrentWeapon != null) {
-			CurrentWeapon = null;
-			Destroy(GetWeaponOnHand());
-		}
-		// Equip new weapon.
-		CurrentWeapon = item.ItemPrefab.GetComponent<Weapon>();
-		GameObject weapon = Instantiate(item.ItemPrefab, handPos.position, Quaternion.identity);
-		weapon.transform.parent = handPos;
 	}
 
 	#region Handle_Attack_Functions

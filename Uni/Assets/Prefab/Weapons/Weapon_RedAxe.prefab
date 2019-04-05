@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7802973441485115179}
   - component: {fileID: 7802973441485115176}
   - component: {fileID: 1284028117907116729}
-  - component: {fileID: 2686060212844764475}
+  - component: {fileID: 8410146190359149200}
   m_Layer: 8
   m_Name: Weapon_RedAxe
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2686060212844764475
+--- !u!114 &8410146190359149200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,5 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d8d90baf14541469878d4ef9ac1e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 1865a713b8abc074987a02cd8b0cab7b, type: 2}
   weaponType: 0

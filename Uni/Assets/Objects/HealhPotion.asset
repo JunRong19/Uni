@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc41226fa53e68b4b9f6be63ff82746c, type: 3}
-  m_Name: Potion
+  m_Script: {fileID: 11500000, guid: 253f9ad4dda723945971e5ffc2c33117, type: 3}
+  m_Name: HealhPotion
   m_EditorClassIdentifier: 
-  name: Potion
-  icon: {fileID: 21300000, guid: 81d1729e13ec7ae48a66ce0ec3ccc0e2, type: 3}
+  name: New Item
+  icon: {fileID: 0}
   showInInventory: 1
-  itemType: 2
-  itemPrefab: {fileID: 8253284034635646926, guid: 36bc3db7ee88f7b4a9ec5f3001bccca5,
-    type: 3}
+  itemType: 0
+  healthGain: 0

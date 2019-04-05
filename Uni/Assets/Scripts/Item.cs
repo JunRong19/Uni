@@ -10,14 +10,7 @@ public class Item : ScriptableObject {
 	[SerializeField, Tooltip("What type of item this is")]
 	private ItemType itemType;
 
-	[SerializeField, Tooltip("Actual item prefab to be instantiated into the game")]
-	private GameObject itemPrefab;
-
 	#region Properties
-
-	public GameObject ItemPrefab {
-		get { return itemPrefab; }
-	}
 
 	public ItemType ItemType {
 		get { return itemType; }
