@@ -11,8 +11,8 @@ public class PlayerAnimationController : Singleton<PlayerAnimationController> {
 		anim = GetComponent<Animator>();
 	}
 
-	void SetArmorLayerWeight(int i) {
-		for(int n = 1; n < anim.layerCount + 1; n++) {
+	public void SetArmorLayerWeight(int i) {
+		for(int n = 1; n < anim.layerCount; n++) {
 			int val = ((n) == i) ? 1 : 0;
 			anim.SetLayerWeight(n, val);
 		}

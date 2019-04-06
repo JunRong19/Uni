@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253f9ad4dda723945971e5ffc2c33117, type: 3}
-  m_Name: HealhPotion
+  m_Script: {fileID: 11500000, guid: e4649eb23d5ffb44daf879e60a919242, type: 3}
+  m_Name: DefaultArmor
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 0}
+  name: Blue Jacket
+  icon: {fileID: 21300000, guid: b9af60d17ca4d854795e31efdd01ca29, type: 3}
   showInInventory: 1
   itemType: 0
-  healthGain: 0
+  equipSlot: 1
+  armorModifier: 5
+  damageModifier: 0
+  skinLayer: 0

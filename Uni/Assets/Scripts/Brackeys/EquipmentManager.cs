@@ -33,8 +33,44 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 		return currentEquipment[(int)slot];
 	}
 
+	void EquipAllDefault() {
+		foreach(ArmorEquipment a in defaultWear) {
+			EquipArmor(a);
+		}
+	}
+
 	// Equip a new item
-	public void Equip(Equipment newItem) {
+	public void EquipWeapon(WeaponEquipment newItem) {
+		Equipment oldItem = null;
+
+		// Find out what slot the item fits in
+		// and put it there.
+		int slotIndex = (int)newItem.equipSlot;
+
+		// If there was already an item in the slot
+		// make sure to put it back in the inventory
+		if(currentEquipment[slotIndex] != null) {
+			oldItem = currentEquipment[slotIndex];
+
+			inventory.Add(oldItem);
+
+			Destroy(handPos.GetChild(0).gameObject);
+		}
+
+		// An item has been equipped so we trigger the callback
+		if(onEquipmentChanged != null) {
+			onEquipmentChanged.Invoke(newItem, oldItem);
+		}
+
+		currentEquipment[slotIndex] = newItem;
+		Debug.Log(newItem.name + " equipped!");
+
+		if(newItem.ItemPrefab) {
+			InitializeWeapon(newItem);
+		}
+	}
+
+	public void EquipArmor(ArmorEquipment newItem) {
 		Equipment oldItem = null;
 
 		// Find out what slot the item fits in
@@ -56,39 +92,18 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 
 		currentEquipment[slotIndex] = newItem;
 		Debug.Log(newItem.name + " equipped!");
+		InitializeArmor(newItem);
 
-		if(newItem.ItemPrefab) {
-			InitializeEquipment(newItem);
-		}
 	}
 
-	void EquipAllDefault() {
-		foreach(Equipment e in defaultWear) {
-			Equip(e);
-		}
-	}
-
-	void InitializeEquipment(Equipment item) {
-		switch(item.ItemType) {
-			case ItemType.Weapon:
-				HandleEquipingWeapon(item.ItemPrefab);
-				break;
-
-			case ItemType.Armor:
-				HandleEquipingArmor();
-				break;
-		}
-	}
-
-	void HandleEquipingWeapon(GameObject weapon) {
-		Destroy(handPos.GetChild(0).gameObject);
-		PlayerCombatController.Instance.CurrentWeapon = weapon.GetComponent<Weapon>();
-		GameObject newWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+	void InitializeWeapon(WeaponEquipment item) {
+		PlayerCombatController.Instance.CurrentWeapon = item.ItemPrefab.GetComponent<Weapon>();
+		GameObject newWeapon = Instantiate(item.ItemPrefab, transform.position, Quaternion.identity);
 		HandleWeaponSpawnPos(ref newWeapon);
 	}
 
-	void HandleEquipingArmor() {
-
+	void InitializeArmor(ArmorEquipment item) {
+		PlayerAnimationController.Instance.SetArmorLayerWeight(item.skinLayer);
 	}
 
 	void HandleWeaponSpawnPos(ref GameObject newWeapon) {
