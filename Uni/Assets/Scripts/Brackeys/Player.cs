@@ -17,4 +17,8 @@ public class Player : Singleton<Player> {
 	void Die() {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
+
+	public int GetFacingDirection() {
+		return (int)Mathf.Sign(transform.localScale.x);
+	}
 }

@@ -110,5 +110,6 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 		newWeapon.transform.rotation = Quaternion.identity;
 		newWeapon.transform.parent = handPos;
 		newWeapon.transform.localPosition = Vector2.zero;
+		newWeapon.transform.localScale = Vector2.one;
 	}
 }

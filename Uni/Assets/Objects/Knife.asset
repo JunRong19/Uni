@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3509faa00fbd95f448dfb1265edb513a, type: 3}
-  m_Name: Axe
+  m_Name: Knife
   m_EditorClassIdentifier: 
-  name: Axe
-  icon: {fileID: 21300000, guid: 5c551961e28a59743970b4bdc356a81d, type: 3}
+  name: Knife
+  icon: {fileID: 21300000, guid: 89a181baafa0515428c81d4f680aa153, type: 3}
   showInInventory: 1
   itemType: 1
   equipSlot: 0
   armorModifier: 0
   damageModifier: 10
-  itemPrefab: {fileID: 4002689865739691246, guid: 2973ccee2ee29c140967d322d5f0b981,
+  itemPrefab: {fileID: 265134043677627922, guid: d7cab9dcb8adf2a46bf80d971c6720ca,
     type: 3}

@@ -4778,7 +4778,7 @@ GameObject:
   - component: {fileID: 1003752038}
   - component: {fileID: 1003752033}
   m_Layer: 0
-  m_Name: PickUp_RedAxe
+  m_Name: PickUp_Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4837,8 +4837,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28ac009963de66045b31085fdfd00170, type: 3}
-  m_Color: {r: 1, g: 0.08962262, b: 0.08962262, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 89a181baafa0515428c81d4f680aa153, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4886,7 +4886,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8375, y: 0.8375}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4907,4 +4907,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893af1e47d637734ab360a9c396b0c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 40a97eba5a216e5478f5a5e7b5fab669, type: 2}
+  item: {fileID: 11400000, guid: 1839dc0096e2ef34ba1369f57f47621b, type: 2}
