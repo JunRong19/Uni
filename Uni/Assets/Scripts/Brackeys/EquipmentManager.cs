@@ -47,8 +47,6 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 			oldItem = currentEquipment[slotIndex];
 
 			inventory.Add(oldItem);
-
-			Destroy(handPos.GetChild(0).gameObject);
 		}
 
 		// An item has been equipped so we trigger the callback
@@ -77,14 +75,20 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 				break;
 
 			case ItemType.Armor:
+				HandleEquipingArmor();
 				break;
 		}
 	}
 
 	void HandleEquipingWeapon(GameObject weapon) {
+		Destroy(handPos.GetChild(0).gameObject);
 		PlayerCombatController.Instance.CurrentWeapon = weapon.GetComponent<Weapon>();
 		GameObject newWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
 		HandleWeaponSpawnPos(ref newWeapon);
+	}
+
+	void HandleEquipingArmor() {
+
 	}
 
 	void HandleWeaponSpawnPos(ref GameObject newWeapon) {
