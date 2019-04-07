@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class EquipmentManager : Singleton<EquipmentManager> {
 
-	public Equipment[] defaultWear;
+	public WeaponEquipment defaultWeapon;
+	public ArmorEquipment defaultArmor;
 
-	private Equipment[] currentEquipment;
+	private WeaponEquipment currentWeapon;
+	private ArmorEquipment currentArmor;
 
 	[SerializeField, Tooltip("Position of hand")]
 	private Transform handPos;
@@ -22,21 +24,24 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 	void Start() {
 		inventory = Inventory.Instance;
 
-		int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
-		currentEquipment = new Equipment[numSlots];
+		//int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+		//currentEquipment = new Equipment[numSlots];
 
 		EquipAllDefault();
 	}
 
 
-	public Equipment GetEquipment(EquipmentSlot slot) {
-		return currentEquipment[(int)slot];
+	public WeaponEquipment GetWeapon() {
+		return currentWeapon;
+	}
+
+	public ArmorEquipment GetArmor() {
+		return currentArmor;
 	}
 
 	void EquipAllDefault() {
-		foreach(ArmorEquipment a in defaultWear) {
-			EquipArmor(a);
-		}
+		EquipWeapon(defaultWeapon);
+		EquipArmor(defaultArmor);
 	}
 
 	// Equip a new item
@@ -49,8 +54,8 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 
 		// If there was already an item in the slot
 		// make sure to put it back in the inventory
-		if(currentEquipment[slotIndex] != null) {
-			oldItem = currentEquipment[slotIndex];
+		if(currentWeapon != null) {
+			oldItem = currentWeapon;
 
 			inventory.Add(oldItem);
 
@@ -62,7 +67,7 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 			onEquipmentChanged.Invoke(newItem, oldItem);
 		}
 
-		currentEquipment[slotIndex] = newItem;
+		currentWeapon = newItem;
 		Debug.Log(newItem.name + " equipped!");
 
 		if(newItem.ItemPrefab) {
@@ -79,8 +84,8 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 
 		// If there was already an item in the slot
 		// make sure to put it back in the inventory
-		if(currentEquipment[slotIndex] != null) {
-			oldItem = currentEquipment[slotIndex];
+		if(currentArmor != null) {
+			oldItem = currentArmor;
 
 			inventory.Add(oldItem);
 		}
@@ -90,7 +95,7 @@ public class EquipmentManager : Singleton<EquipmentManager> {
 			onEquipmentChanged.Invoke(newItem, oldItem);
 		}
 
-		currentEquipment[slotIndex] = newItem;
+		currentArmor = newItem;
 		Debug.Log(newItem.name + " equipped!");
 		InitializeArmor(newItem);
 
