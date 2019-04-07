@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour {
 
@@ -15,17 +16,34 @@ public class BattleManager : MonoBehaviour {
 	private WeaponEquipment currentWeapon;
 	private ArmorEquipment currentArmor;
 
-	[SerializeField, Tooltip("Position of hand")]
-	private Transform handPos;
+	[SerializeField, Tooltip("Sprite of weapon Uni is holding.")]
+	private Image weaponSprite;
+
+	private enum TurnOrder { player, enemy }
+
+	private TurnOrder currentTurn;
+
+	private PlayerStats playerStats;
+
+	#region Properties
+
+	#endregion
 
 	private void Start() {
 		battleCanvas.SetActive(false);
+		playerStats = Player.Instance.playerStats;
 	}
 
 	public void InitializeBattle() {
 		battleCanvas.SetActive(true);
 		GetEquipment();
 		InitializePlayer();
+		currentTurn = TurnOrder.player;
+		StartCoroutine(EnemyPrepareAttack());
+		//Debug.Log(playerStats.currentHealth);
+		//Debug.Log(playerStats.maxHealth.GetValue());
+		//Debug.Log(playerStats.damage.GetValue());
+		//Debug.Log(playerStats.armor.GetValue());
 	}
 
 	private void GetEquipment() {
@@ -55,16 +73,32 @@ public class BattleManager : MonoBehaviour {
 		}
 	}
 
-
 	void InitializeWeapon(WeaponEquipment item) {
-		GameObject newWeapon = Instantiate(item.ItemPrefab, transform.position, Quaternion.identity);
-		HandleWeaponSpawnPos(ref newWeapon);
+		weaponSprite.sprite = item.icon;
 	}
 
-	void HandleWeaponSpawnPos(ref GameObject newWeapon) {
-		newWeapon.transform.rotation = Quaternion.identity;
-		newWeapon.transform.parent = handPos;
-		newWeapon.transform.localPosition = Vector2.zero;
-		newWeapon.transform.localScale = Vector2.one;
+	public void PlayerAttack() {
+		if(currentTurn == TurnOrder.player) {
+			playerAnim.SetTrigger("Attack");
+			EndTurn(currentTurn);
+		}
+	}
+
+	void EndTurn(TurnOrder previousTurn) {
+		CheckForDeath();
+
+		currentTurn = (previousTurn == TurnOrder.player) ? TurnOrder.enemy : TurnOrder.player;
+	}
+
+	IEnumerator EnemyPrepareAttack() {
+		yield return new WaitUntil(() => currentTurn == TurnOrder.enemy);
+
+		//enemyAnim.SetTrigger("Attack");
+		EndTurn(currentTurn);
+		StartCoroutine(EnemyPrepareAttack());
+	}
+
+	void CheckForDeath() {
+
 	}
 }

@@ -18,6 +18,6 @@ MonoBehaviour:
   itemType: 1
   equipSlot: 0
   armorModifier: 0
-  damageModifier: 10
+  damageModifier: 20
   itemPrefab: {fileID: 4002689865739691246, guid: 2973ccee2ee29c140967d322d5f0b981,
     type: 3}
